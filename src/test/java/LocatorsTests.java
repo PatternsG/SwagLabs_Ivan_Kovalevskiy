@@ -29,6 +29,5 @@ public class LocatorsTests {
         userName.sendKeys("123");
         WebElement password = driver.findElement(By.cssSelector("#password"));
         password.sendKeys("1245");
-
     }
 }
