@@ -30,7 +30,6 @@ public class ShoppingCartPage extends  HeaderPage{
     }
 
     public String getItemName(){
-        //List<WebElement> name = driver.findElements(itemName);
         return driver.findElement(itemName).getText();
     }
 

@@ -13,11 +13,11 @@ public class ItemDetailsPage extends HeaderPage{
         super(driver);
     }
 
-    public void setBackToProductsButton(){
+    public void clickBackToProductsButton(){
         driver.findElement(backToProductsButton).click();
     }
 
-    public void setAddToCartButton(){
+    public void clickAddToCartButton(){
         driver.findElement(addToCartButton).click();
     }
 

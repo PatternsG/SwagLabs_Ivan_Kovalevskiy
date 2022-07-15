@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage extends HeaderPage{
@@ -18,8 +17,8 @@ public class ProductsPage extends HeaderPage{
     private final By homePageHeader = By.id("header_container");
     private final By price = By.cssSelector(".inventory_item_price");
     private final By productSortContainer = By.cssSelector(".product_sort_container");
-    private final By inventoryItemDescription = By.xpath
-            ("//div[@class='inventory_item']/div/div/a/div[@class='inventory_item_name']");
+    private final By inventoryItemDescription = By.cssSelector(
+            ".inventory_item_name");
 
     public ProductsPage(WebDriver driver){
         super(driver);
@@ -44,7 +43,7 @@ public class ProductsPage extends HeaderPage{
         return productContainer.findElement(price).getText();
     }
 
-    public void openItemByName(String productName){
+    public void clickOpenItemByName(String productName){
         WebElement productContainer = getProductContainerByName(productName);
         productContainer.findElement(productLink).click();
     }
@@ -53,7 +52,7 @@ public class ProductsPage extends HeaderPage{
         return driver.findElement(By.xpath(String.format(productContainerLocator, productName)));
     }
 
-    public void choiceSortContainer(int indexCollection){
+    public void clickChoiceSortContainer(int indexCollection){
         WebElement sortContainer = driver.findElement(productSortContainer);
         Select select = new Select(sortContainer);
         List<WebElement> sort = select.getOptions();

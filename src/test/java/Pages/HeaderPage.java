@@ -37,7 +37,7 @@ public class HeaderPage extends BasePage{
         driver.findElement(shoppingCartButton).click();
     }
 
-    public String numberOfItemsInTheCart(){
+    public String getNumberOfItemsInTheCart(){
         return driver.findElement(itemsInTheCart).getText();
     }
 
