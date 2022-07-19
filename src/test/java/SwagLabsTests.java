@@ -3,37 +3,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import java.util.List;
 
 public class SwagLabsTests {
 
     private WebDriver driver;
 
     @BeforeClass
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
     @BeforeMethod
-    public void input(){
+    public void input() {
         driver.get("https://www.saucedemo.com/");
     }
 
     @AfterClass
-    public void quit(){
+    public void quit() {
         driver.quit();
     }
 
     @Test
-    public void swagLabTest(){
+    public void swagLabTest() {
 
         WebElement userName = driver.findElement(By.cssSelector("#user-name"));
         userName.sendKeys("standard_user");
