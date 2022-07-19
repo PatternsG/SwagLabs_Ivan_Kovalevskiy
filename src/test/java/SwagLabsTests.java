@@ -51,8 +51,6 @@ public class SwagLabsTests {
                 "Name is incorrect");
         Assert.assertEquals(productPrice.getText(), "$29.99",
                 "The price is incorrect");
-        System.out.println(productName.getText());
-        System.out.println(productPrice.getText());
     }
 
 }
