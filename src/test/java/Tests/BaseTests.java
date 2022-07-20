@@ -18,6 +18,10 @@ public class BaseTests {
     final String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
     final String SAUCE_LABS_BIKE_LIGHT = "Sauce Labs Bike Light";
     final String SAUCE_LABS_FLEECE_JACKET = "Sauce Labs Fleece Jacket";
+    final String CHECKOUT_FIRST_NAME = "Ivan";
+    final String CHECKOUT_LAST_NAME = "Kovalevsky";
+    final String CHECKOUT_POSTAL_CODE = "Ivan";
+
 
     protected WebDriver driver;
 

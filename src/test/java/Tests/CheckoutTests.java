@@ -11,7 +11,7 @@ public class CheckoutTests extends BaseTests {
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         headerPage.shoppingCartButtonClick();
         shoppingCartPage.clickCheckoutButton();
-        checkoutPage.setYourInformationInput();
+        checkoutPage.setYourInformationInput(CHECKOUT_FIRST_NAME, CHECKOUT_LAST_NAME, CHECKOUT_POSTAL_CODE);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutPage.isOverviewTitleDisplayed());
     }
@@ -22,8 +22,8 @@ public class CheckoutTests extends BaseTests {
         productsPage.clickAddToCartButton(SAUCE_LABS_ONESIE);
         headerPage.shoppingCartButtonClick();
         shoppingCartPage.clickCheckoutButton();
-        checkoutPage.setFirstNameInput();
-        checkoutPage.setLastNameInput();
+        checkoutPage.setFirstNameInput(CHECKOUT_FIRST_NAME);
+        checkoutPage.setLastNameInput(CHECKOUT_LAST_NAME);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutPage.isPostalCodeErrorMessageDisplayed());
     }

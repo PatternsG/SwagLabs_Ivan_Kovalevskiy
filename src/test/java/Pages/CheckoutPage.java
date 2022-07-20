@@ -7,11 +7,11 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutPage extends BasePage {
 
     @FindBy(id = "first-name")
-    WebElement firstName;
+    WebElement firstNameInput;
     @FindBy(id = "last-name")
-    WebElement lastName;
+    WebElement lastNameInput;
     @FindBy(id = "postal-code")
-    WebElement postalCode;
+    WebElement postalCodeInput;
     @FindBy(id = "continue")
     WebElement continueButton;
     @FindBy(xpath = "//span[text() = 'Checkout: Overview']")
@@ -23,18 +23,18 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
-    public void setYourInformationInput() {
-        firstName.sendKeys("Ivan");
-        lastName.sendKeys("Kovalevsky");
-        postalCode.sendKeys("12345");
+    public void setYourInformationInput(String firstName, String lastName, String postalCode) {
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
+        postalCodeInput.sendKeys(postalCode);
     }
 
-    public void setFirstNameInput() {
-        firstName.sendKeys("Ivan");
+    public void setFirstNameInput(String firstName) {
+        firstNameInput.sendKeys(firstName);
     }
 
-    public void setLastNameInput() {
-        lastName.sendKeys("Kovalevsky");
+    public void setLastNameInput(String lastName) {
+        lastNameInput.sendKeys(lastName);
     }
 
     public void clickContinueButton() {
