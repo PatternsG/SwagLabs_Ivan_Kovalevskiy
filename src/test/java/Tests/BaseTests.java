@@ -8,13 +8,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import java.util.concurrent.TimeUnit;
 
 public class BaseTests {
 
     final String USER_NAME = "standard_user";
     final String PASSWORD = "secret_sauce";
-
+    final String SAUCE_LABS_ONESIE = "Sauce Labs Onesie";
+    final String T_SHIRT = "Test.allTheThings() T-Shirt (Red)";
     final String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
     final String SAUCE_LABS_BIKE_LIGHT = "Sauce Labs Bike Light";
     final String SAUCE_LABS_FLEECE_JACKET = "Sauce Labs Fleece Jacket";
@@ -26,9 +26,10 @@ public class BaseTests {
     protected HeaderPage headerPage;
     protected ShoppingCartPage shoppingCartPage;
     protected ItemDetailsPage itemDetailsPage;
+    protected CheckoutPage checkoutPage;
 
     @BeforeClass
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -37,15 +38,16 @@ public class BaseTests {
         headerPage = new HeaderPage(driver);
         shoppingCartPage = new ShoppingCartPage(driver);
         itemDetailsPage = new ItemDetailsPage(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
 
     @BeforeMethod
-    public void navigate(){
+    public void navigate() {
         driver.get("https://www.saucedemo.com/");
     }
 
     @AfterClass
-    public void quit(){
+    public void quit() {
         driver.quit();
     }
 }

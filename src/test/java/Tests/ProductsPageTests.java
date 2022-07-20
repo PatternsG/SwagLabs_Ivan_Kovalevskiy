@@ -3,11 +3,11 @@ package Tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ProductsPageTests extends BaseTests{
+public class ProductsPageTests extends BaseTests {
 
     @Test
-    public void addToShoppingCartPositiveTest(){
-        loginPage.initialization(USER_NAME,PASSWORD);
+    public void addToShoppingCartPositiveTest() {
+        loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         Assert.assertEquals(headerPage.getNumberOfItemsInTheCart(), "1",
                 "Shopping cart icon not working properly");
@@ -17,7 +17,7 @@ public class ProductsPageTests extends BaseTests{
     }
 
     @Test
-    public void removeToShoppingCartPositiveTest(){
+    public void removeToShoppingCartPositiveTest() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         productsPage.clickAddToCartButton(SAUCE_LABS_BIKE_LIGHT);
@@ -33,5 +33,20 @@ public class ProductsPageTests extends BaseTests{
         productsPage.clickChoiceSortContainer(3);
         productsPage.clickInventoryItemDescription();
         Assert.assertEquals(itemDetailsPage.getProductName(), SAUCE_LABS_FLEECE_JACKET);
+    }
+
+    @Test
+    public void productsSortContainerByNameZtoA() {
+        loginPage.initialization(USER_NAME, PASSWORD);
+        productsPage.clickChoiceSortContainer(1);
+        Assert.assertEquals(productsPage.getCollectionProductsByIndex(0), T_SHIRT);
+        Assert.assertEquals(productsPage.getCollectionProductsByIndex(5), SAUCE_LABS_BACKPACK);
+    }
+
+    @Test
+    public void productsSortContainerByPriceHighToLow() {
+        loginPage.initialization(USER_NAME, PASSWORD);
+        productsPage.clickChoiceSortContainer(3);
+        Assert.assertEquals(productsPage.getCollectionPricesSort(), productsPage.getCollectionPrices());
     }
 }
