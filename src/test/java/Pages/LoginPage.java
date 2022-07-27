@@ -8,7 +8,7 @@ public class LoginPage extends BasePage{
     private By userNameInput = By.cssSelector("#user-name");
     private By passwordInput = By.cssSelector("#password");
     private By loginButton = By.cssSelector("#login-button");
-    private By errorMessage = By.cssSelector(".error-button");
+    private By errorMessage = By.xpath("//h3[@data-test='error']");
 
     public LoginPage(WebDriver driver){
         super(driver);

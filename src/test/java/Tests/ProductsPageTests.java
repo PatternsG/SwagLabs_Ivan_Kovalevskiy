@@ -5,8 +5,9 @@ import org.testng.annotations.Test;
 
 public class ProductsPageTests extends BaseTests {
 
-    @Test
-    public void addToShoppingCartPositiveTest() {
+    @Test(description = "Checking the addition of goods to the cart",
+            groups = {"smoke"})
+    public void addToShoppingCartPositiveTest(){
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         Assert.assertEquals(headerPage.getNumberOfItemsInTheCart(), "1",
@@ -16,7 +17,8 @@ public class ProductsPageTests extends BaseTests {
                 "Wrong item added");
     }
 
-    @Test
+    @Test(description = "Checking if items have been removed from the shopping cart",
+            groups = {"smoke"})
     public void removeToShoppingCartPositiveTest() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
@@ -27,7 +29,8 @@ public class ProductsPageTests extends BaseTests {
                 "Shopping cart icon not working properly");
     }
 
-    @Test
+    @Test(description = "Sorting check",
+            groups = {"smoke"})
     public void productsSortContainerPositiveTest() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickChoiceSortContainer(3);
@@ -35,7 +38,8 @@ public class ProductsPageTests extends BaseTests {
         Assert.assertEquals(itemDetailsPage.getProductName(), SAUCE_LABS_FLEECE_JACKET);
     }
 
-    @Test
+    @Test(description = "Check sorting by name",
+            groups = {"regression"})
     public void productsSortContainerByNameZtoA() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickChoiceSortContainer(1);
@@ -43,7 +47,8 @@ public class ProductsPageTests extends BaseTests {
         Assert.assertEquals(productsPage.getCollectionProductsByIndex(5), SAUCE_LABS_BACKPACK);
     }
 
-    @Test
+    @Test(description = "Check sorting by price",
+            groups = {"regression"})
     public void productsSortContainerByPriceHighToLow() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickChoiceSortContainer(3);

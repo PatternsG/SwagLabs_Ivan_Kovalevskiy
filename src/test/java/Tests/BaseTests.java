@@ -2,9 +2,11 @@ package Tests;
 
 import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -20,8 +22,7 @@ public class BaseTests {
     final String SAUCE_LABS_FLEECE_JACKET = "Sauce Labs Fleece Jacket";
     final String CHECKOUT_FIRST_NAME = "Ivan";
     final String CHECKOUT_LAST_NAME = "Kovalevsky";
-    final String CHECKOUT_POSTAL_CODE = "Ivan";
-
+    final String CHECKOUT_POSTAL_CODE = "123456";
 
     protected WebDriver driver;
 
@@ -32,7 +33,7 @@ public class BaseTests {
     protected ItemDetailsPage itemDetailsPage;
     protected CheckoutPage checkoutPage;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -45,12 +46,19 @@ public class BaseTests {
         checkoutPage = new CheckoutPage(driver);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void navigate() {
         driver.get("https://www.saucedemo.com/");
     }
 
-    @AfterClass
+    @AfterMethod(alwaysRun = true)
+    public void clearCookies() {
+        driver.manage().deleteAllCookies();
+        ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+        ((JavascriptExecutor) driver).executeScript(String.format("window.sessionStorage.clear();"));
+    }
+
+    @AfterClass(alwaysRun = true)
     public void quit() {
         driver.quit();
     }

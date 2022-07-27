@@ -5,8 +5,9 @@ import org.testng.annotations.Test;
 
 public class CheckoutTests extends BaseTests {
 
-    @Test
-    public void checkoutInputTest() {
+    @Test(description = "Checking the transition to the checkout page",
+            groups = {"smoke"})
+    public void checkoutInputTest(){
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         headerPage.shoppingCartButtonClick();
@@ -16,8 +17,9 @@ public class CheckoutTests extends BaseTests {
         Assert.assertTrue(checkoutPage.isOverviewTitleDisplayed());
     }
 
-    @Test
-    public void checkoutInputNegativeTest() {
+    @Test(description = "Checking for incomplete information entered on the 'CHECKOUT: YOUR INFORMATION' page",
+            groups = {"negative", "regression"})
+    public void checkoutInputNegativeTest() throws InterruptedException {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_ONESIE);
         headerPage.shoppingCartButtonClick();
@@ -26,5 +28,6 @@ public class CheckoutTests extends BaseTests {
         checkoutPage.setLastNameInput(CHECKOUT_LAST_NAME);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutPage.isPostalCodeErrorMessageDisplayed());
+        Thread.sleep(5000);
     }
 }
