@@ -5,7 +5,8 @@ import org.testng.annotations.Test;
 
 public class ShoppingCartTests extends BaseTests{
 
-    @Test
+    @Test(description = "Checking if items have been removed from the shopping cart",
+            groups = {"smoke"})
     public void removeProductsShoppingCartPositiveTest(){
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
@@ -16,8 +17,9 @@ public class ShoppingCartTests extends BaseTests{
         Assert.assertEquals(shoppingCartPage.getItemName(), SAUCE_LABS_BACKPACK);
     }
 
-    @Test
-    public void continueShoppingButtonPositiveTest(){
+    @Test(description = "Switching from the shopping cart to Products page",
+            groups = {"smoke"})
+    public void continueShoppingButtonPositiveTest() {
         loginPage.initialization(USER_NAME, PASSWORD);
         productsPage.clickAddToCartButton(SAUCE_LABS_BACKPACK);
         headerPage.shoppingCartButtonClick();
