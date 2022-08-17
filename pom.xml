@@ -60,7 +60,8 @@
                     </suiteXmlFiles>
                     <!--suppress UnresolvedMavenProperty -->
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>
