@@ -8,6 +8,12 @@ pipeline {
 
     parameters {
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+
+      string (
+             defaultValue: 'regression.xml',
+             name: 'SUITE_NAME',
+             trim: true)
+           }
     }
 
   stages {
