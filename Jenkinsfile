@@ -10,7 +10,7 @@ pipeline {
      gitParameter (branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH')
 
       string (
-             defaultValue: 'regressionTests.xml, negativeTests.xml, smokeTests.xml',
+             defaultValue: 'regressionTests.xml',
              name: 'SUITE_NAME',
              trim: true)
     }
