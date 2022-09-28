@@ -1,8 +1,10 @@
 package Tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class CheckoutTests extends BaseTests {
 
     @Test(description = "Checking the transition to the checkout page",
@@ -13,6 +15,7 @@ public class CheckoutTests extends BaseTests {
         headerPage.shoppingCartButtonClick();
         shoppingCartPage.clickCheckoutButton();
         checkoutPage.setYourInformationInput(CHECKOUT_FIRST_NAME, CHECKOUT_LAST_NAME, CHECKOUT_POSTAL_CODE);
+        log.error("Invalid 'continue button' locator");
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutPage.isOverviewTitleDisplayed());
     }

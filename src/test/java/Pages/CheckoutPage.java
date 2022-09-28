@@ -12,7 +12,7 @@ public class CheckoutPage extends BasePage {
     WebElement lastNameInput;
     @FindBy(id = "postal-code")
     WebElement postalCodeInput;
-    @FindBy(name = "continue")
+    @FindBy(name = "cotinue")
     WebElement continueButton;
     @FindBy(xpath = "//span[text() = 'Checkout: Overview']")
     WebElement overviewTitle;
